@@ -3,3 +3,29 @@
   margin: 0px;
   box-sizing: border-box;
 }
+
+/* font-family: 'IBM Plex Sans', sans-serif; */
+
+body {
+  background-color: #E5E5E5;
+  font-family: 'IBM Plex Sans', sans-serif;
+
+}
+
+/* Header styling */
+.date-time {
+  padding: 25px;
+  margin-top: 35px;
+}
+
+.date {
+  font-size: 5rem;
+  font-weight: 100;
+  text-align: center;
+}
+
+.time {
+  font-size: 3.5rem;
+  font-weight: 300;
+  text-align: center;
+}
