@@ -15,7 +15,7 @@ body {
 /* Header styling */
 .date-time {
   padding: 25px;
-  margin-top: 35px;
+  padding-bottom: 8%;
 }
 
 .date {
@@ -28,4 +28,20 @@ body {
   font-size: 3.5rem;
   font-weight: 300;
   text-align: center;
+}
+
+/* Greeting */
+
+.greeting {
+  text-align: center;
+}
+
+.greeting--header {
+  font-size: 55px;
+  font-weight: 200;
+}
+
+.greeting--paragraph {
+  font-size: 25px;
+  font-weight: 200;
 }

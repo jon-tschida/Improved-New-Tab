@@ -23,11 +23,11 @@ const dayOptions = {
 
 export default function App() {
 
-  let [curTime, setCurTime] = React.useState(formatAMPM(new Date()));
+  let [curTime, setCurTime] = React.useState(new Date());
   let [curDate, setCurDate] = React.useState();
 
   setInterval(() => {
-    setCurTime(formatAMPM(new Date()));
+    setCurTime(new Date());
     setCurDate(new Date());
   }, 5000)
 
@@ -36,8 +36,8 @@ export default function App() {
 
   return (
     <>
-      <Header format={formatAMPM} formatDay={formatDay} curTime={curTime} />
-      <Greeting />
+      <Header formatAMPM={formatAMPM} formatDay={formatDay} curTime={curTime} />
+      <Greeting time={curTime} />
     </>
   );
 }
