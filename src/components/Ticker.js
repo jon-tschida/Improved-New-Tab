@@ -17,14 +17,16 @@ const defaultPrices = [
 export default function Ticker() {
 
     const [prices, setPrices] = React.useState(defaultPrices);
+    let [count, setCount] = React.useState(0)
 
     React.useEffect(() => {
         fetch(`https://data.messari.io/api/v1/assets?fields=id,slug,symbol,metrics/market_data/price_usd`)
             .then(res => res.json())
             .then(data => setPrices(data.data))
 
-    }, [])
+    }, [count])
 
+    let refresh = () => setCount(prevState => prevState + 1);
 
     let pricesArr = [];
     function getPrices(arr) {
@@ -44,6 +46,7 @@ export default function Ticker() {
 
     return (
         <div className='price-list'>
+            <span onClick={refresh} className="material-symbols-outlined refresh">refresh</span>
             {pricesArr}
         </div>
     )
