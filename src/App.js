@@ -1,6 +1,7 @@
 import React from "react"
 import Header from "./components/Header"
 import Greeting from "./components/Greeting";
+import Weather from "./components/Weather";
 
 
 function formatAMPM(date) {
@@ -19,25 +20,13 @@ const dayOptions = {
   day: "numeric",
 };
 
-
-
 export default function App() {
-
-  let [curTime, setCurTime] = React.useState(new Date());
-  let [curDate, setCurDate] = React.useState();
-
-  setInterval(() => {
-    setCurTime(new Date());
-    setCurDate(new Date());
-  }, 5000)
-
-  const formatDay = new Intl.DateTimeFormat(`en-US`, dayOptions).format(curDate);
 
 
   return (
     <>
-      <Header formatAMPM={formatAMPM} formatDay={formatDay} curTime={curTime} />
-      <Greeting time={curTime} />
+      <Header formatAMPM={formatAMPM} dayOptions={dayOptions} />
+      <Weather />
     </>
   );
 }
