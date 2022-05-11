@@ -13,7 +13,7 @@ export default function Greeting(props) {
     return (
 
         <div className='greeting'>
-            <p className='greeting--header'>{greeting}</p>
+            <p className='greeting--header'>{greeting},</p>
         </div>
     )
 }

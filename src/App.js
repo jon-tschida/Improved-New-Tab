@@ -1,7 +1,7 @@
 import React from "react"
 import Header from "./components/Header"
-import Greeting from "./components/Greeting";
 import Weather from "./components/Weather";
+import Ticker from "./components/Ticker";
 
 
 function formatAMPM(date) {
@@ -11,13 +11,15 @@ function formatAMPM(date) {
   hours = hours % 12;
   hours = hours ? hours : 12; // the hour '0' should be '12'
   minutes = minutes < 10 ? "0" + minutes : minutes;
-  var strTime = hours + ":" + minutes + " " + ampm;
+  let strTime = `${hours} : ${minutes}${ampm}`
+  // var strTime = hours + ":" + minutes + " " + ampm;
   return strTime;
 }
 
 const dayOptions = {
   month: "long",
   day: "numeric",
+  weekday: `short`
 };
 
 export default function App() {
@@ -27,6 +29,7 @@ export default function App() {
     <>
       <Header formatAMPM={formatAMPM} dayOptions={dayOptions} />
       <Weather />
+      <Ticker />
     </>
   );
 }

@@ -19,14 +19,14 @@ body {
 }
 
 .date {
-  font-size: 5rem;
-  font-weight: 100;
+  font-size: 3rem;
+  font-weight: 300;
   text-align: center;
 }
 
 .time {
-  font-size: 3.5rem;
-  font-weight: 300;
+  font-size: 4rem;
+  font-weight: 100;
   text-align: center;
 }
 
@@ -48,9 +48,18 @@ body {
 
 /* Weather */
 
+.icon-description {
+  margin-top: 10px;
+}
+
 .weather-icon {
-  margin-top: 25px;
   /* border: 1px solid black; */
   border-radius: 15px;
   box-shadow: 0px 0px 2px;
+}
+
+.weather--paragraph {
+  font-size: 15px;
+  font-weight: 400;
+  padding: 10px;
 }

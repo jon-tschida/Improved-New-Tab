@@ -17,8 +17,8 @@ export default function Header(props) {
     return (
         <div>
             <div className='date-time'>
-                <p className='date'>{formatDay}</p>
                 <p className='time'>{props.formatAMPM(curTime)}</p>
+                <p className='date'>{formatDay}</p>
             </div>
             <Greeting time={curTime} />
 
