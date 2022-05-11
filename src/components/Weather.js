@@ -17,6 +17,9 @@ let loadingData = {
 // Function for converting temps from API to F
 let convertF = (temp) => Math.trunc((temp - 273.15) * 9 / 5 + 32)
 
+// Function to capitalize
+let capitalize = (str) => str.replace(str[0], str[0].toUpperCase())
+
 export default function Weather() {
     const [weatherData, setWeatherData] = React.useState(loadingData)
 
@@ -29,13 +32,8 @@ export default function Weather() {
 
     return (
         <div className='greeting'>
-            <p className='greeting--paragraph'>Right now it is {convertF(weatherData.main.feels_like)}°,</p>
+            <p className='greeting--paragraph'>{capitalize(weatherData.weather[0].description)} and {convertF(weatherData.main.feels_like)}°,</p>
             {convertF(weatherData.main.temp_max) !== convertF(weatherData.main.feels_like) && <p className='greeting--paragraph'>with a high today of {convertF(weatherData.main.temp_max)}°</p>}
-
-            <div className='icon-description'>
-                <p className='weather--paragraph'>{weatherData.weather[0].description}</p>
-                <img src={`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`} alt="weather icon" className='weather-icon'></img>
-            </div>
         </div>
     )
 }

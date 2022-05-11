@@ -43,8 +43,8 @@ export default function Ticker() {
     getPrices(prices)
 
     return (
-        <>
+        <div className='price-list'>
             {pricesArr}
-        </>
+        </div>
     )
 }
