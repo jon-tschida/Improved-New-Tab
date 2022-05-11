@@ -26,11 +26,11 @@ export default function App() {
 
 
   return (
-    <>
+    <div>
       <Header formatAMPM={formatAMPM} dayOptions={dayOptions} />
       <Weather />
       <Ticker />
-    </>
+    </div>
   );
 }
 

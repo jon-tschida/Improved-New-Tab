@@ -7,10 +7,13 @@
 /* font-family: 'IBM Plex Sans', sans-serif; */
 
 body {
-  background-color: #E5E5E5;
   font-family: 'IBM Plex Sans', sans-serif;
+  background-color: rgb(214, 214, 214);
+  color: rgb(41, 41, 41);
 
 }
+
+
 
 /* Header styling */
 .date-time {
@@ -67,7 +70,8 @@ body {
 /* Ticker/Prices */
 
 .price-list {
-  padding-top: 60px;
+
+  padding: 60px 0px 60px 0px;
 
   display: flex;
   flex-direction: column;
