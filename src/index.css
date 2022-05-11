@@ -8,11 +8,9 @@
 
 body {
   font-family: 'IBM Plex Sans', sans-serif;
-  background-image: url(../images/background.jpeg);
-  /* color: rgb(41, 41, 41); */
-  color: rgb(228, 228, 228);
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: rgb(226, 226, 226);
+  color: rgb(41, 41, 41);
+
 }
 
 
