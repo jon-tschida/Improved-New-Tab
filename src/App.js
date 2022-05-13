@@ -1,8 +1,7 @@
-import React from "react"
-import Header from "./components/Header"
+import React from "react";
+import Header from "./components/Header";
 import Weather from "./components/Weather";
 import Ticker from "./components/Ticker";
-
 
 function formatAMPM(date) {
   var hours = date.getHours();
@@ -11,7 +10,7 @@ function formatAMPM(date) {
   hours = hours % 12;
   hours = hours ? hours : 12; // the hour '0' should be '12'
   minutes = minutes < 10 ? "0" + minutes : minutes;
-  let strTime = `${hours} : ${minutes}${ampm}`
+  let strTime = `${hours} : ${minutes}${ampm}`;
   // var strTime = hours + ":" + minutes + " " + ampm;
   return strTime;
 }
@@ -19,18 +18,19 @@ function formatAMPM(date) {
 const dayOptions = {
   month: "long",
   day: "numeric",
-  weekday: `short`
+  weekday: `short`,
 };
 
 export default function App() {
-
-
   return (
     <div>
-      <Header formatAMPM={formatAMPM} dayOptions={dayOptions} />
-      <Weather />
-      <Ticker />
+      <div className="top-half">
+        <Header formatAMPM={formatAMPM} dayOptions={dayOptions} />
+        <Weather />
+      </div>
+      <div className="bottom-half">
+        <Ticker />
+      </div>
     </div>
   );
 }
-

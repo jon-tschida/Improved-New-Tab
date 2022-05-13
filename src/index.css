@@ -4,21 +4,22 @@
   box-sizing: border-box;
 }
 
+:root {
+  --segment-spacing: 10%;
+}
+
 /* font-family: 'IBM Plex Sans', sans-serif; */
 
 body {
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: "IBM Plex Sans", sans-serif;
   background-color: rgb(226, 226, 226);
   color: rgb(41, 41, 41);
-
 }
-
-
 
 /* Header styling */
 .date-time {
   padding: 25px;
-  padding-bottom: 8%;
+  padding-bottom: var(--segment-spacing);
 }
 
 .date {
@@ -51,28 +52,12 @@ body {
 
 /* Weather */
 
-.icon-description {
-  margin-top: 10px;
+.weather-desc {
+  text-align: center;
 }
-
-.weather-icon {
-  /* border: 1px solid black; */
-  border-radius: 15px;
-  box-shadow: 0px 0px 2px;
-}
-
-.weather--paragraph {
-  font-size: 15px;
-  font-weight: 400;
-  padding: 10px;
-}
-
 /* Ticker/Prices */
 
 .price-list {
-
-  padding: 60px 0px 60px 0px;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -87,11 +72,59 @@ body {
 
 .refresh {
   font-size: 25px;
-  transition: transform 0.2s ease-in-out;
+  transition: transform 0.3s ease-in-out;
 }
 
 .refresh:hover {
   cursor: pointer;
   transform: rotate(0.5turn);
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Half chop-up */
+.bottom-half {
+  padding-top: var(--segment-spacing);
+}
+
+/* Media Query for larger monitors */
+@media screen and (min-width: 1000px) {
+  /* Date and Time */
+  .date {
+    font-size: 3rem;
+    font-weight: 300;
+    text-align: center;
+  }
+
+  .time {
+    font-size: 4rem;
+    font-weight: 200;
+    text-align: center;
+  }
+
+  /* Greeting and Weather desc */
+
+  .greeting--header {
+    font-size: 65px;
+    font-weight: 300;
+  }
+
+  .greeting--paragraph {
+    font-size: 30px;
+    font-weight: 300;
+  }
+
+  /* Prices */
+
+  .price-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    max-width: 40%;
+    margin: auto;
+
+    font-size: 30px;
+    font-weight: 300;
+  }
 }
