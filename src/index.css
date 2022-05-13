@@ -55,6 +55,19 @@ body {
 .weather-desc {
   text-align: center;
 }
+
+.f-c-switch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+.unit-switch {
+  cursor: pointer;
+  user-select: none;
+}
+
 /* Ticker/Prices */
 
 .price-list {
@@ -73,6 +86,7 @@ body {
 .refresh {
   font-size: 25px;
   transition: transform 0.3s ease-in-out;
+  user-select: none;
 }
 
 .refresh:hover {

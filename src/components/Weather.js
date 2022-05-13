@@ -20,14 +20,28 @@ let capitalize = (str) => str.replace(str[0], str[0].toUpperCase());
 
 export default function Weather() {
   const [weatherData, setWeatherData] = React.useState(loadingData);
+  const [fOrC, setForC] = React.useState(() => {
+    let initialValue = JSON.parse(localStorage.getItem("fOrC"));
+    return initialValue || false;
+  });
 
   React.useEffect(() => {
     fetch(
-      `http://api.openweathermap.org/data/2.5/weather?lat=46.76466&lon=-92.09463&units=imperial&appid=2a8ab662e8539e2cb45726e6080084e6`
+      `http://api.openweathermap.org/data/2.5/weather?lat=46.76466&lon=-92.09463&units=${
+        fOrC ? "imperial" : "metric"
+      }&appid=2a8ab662e8539e2cb45726e6080084e6`
     )
       .then((res) => res.json())
       .then((data) => setWeatherData(data));
-  }, []);
+    console.log(`weather data called`);
+  }, [fOrC]);
+
+  React.useEffect(() => {
+    localStorage.setItem("fOrC", fOrC);
+  }, [fOrC]);
+
+  let handleClick = () => setForC((prevState) => !prevState);
+  let getUnit = () => JSON.parse(localStorage.getItem("fOrC"));
 
   return (
     <div className="weather-desc">
@@ -40,6 +54,26 @@ export default function Weather() {
           with a high today of {Math.trunc(weatherData.main.temp_max)}°
         </p>
       )}
+
+      <p className="f-c-switch">
+        F
+        {getUnit() ? (
+          <span
+            className="material-symbols-outlined unit-switch"
+            onClick={handleClick}
+          >
+            toggle_off
+          </span>
+        ) : (
+          <span
+            className="material-symbols-outlined unit-switch"
+            onClick={handleClick}
+          >
+            toggle_on
+          </span>
+        )}
+        C
+      </p>
     </div>
   );
 }
