@@ -10,7 +10,6 @@ export default function Header(props) {
     const interval = setInterval(() => {
       setCurTime(new Date());
       setCurDate(new Date());
-      console.log(`time and date state re-set`);
     }, 5000);
     return () => clearInterval(interval);
   }, []);

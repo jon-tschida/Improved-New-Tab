@@ -24,7 +24,6 @@ export default function Ticker() {
     )
       .then((res) => res.json())
       .then((data) => setPrices(data.data));
-    console.log("crypto api ran");
   }, [count]);
 
   let refresh = () => setCount((prevState) => prevState + 1);
