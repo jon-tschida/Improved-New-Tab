@@ -29,6 +29,7 @@ export default function Weather() {
     )
       .then((res) => res.json())
       .then((data) => setWeatherData(data));
+    console.log(`weather api called`);
   }, []);
 
   return (
