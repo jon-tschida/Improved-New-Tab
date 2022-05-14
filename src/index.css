@@ -8,6 +8,7 @@
   --segment-spacing: 10%;
 }
 
+
 /* font-family: 'IBM Plex Sans', sans-serif; */
 
 body {
@@ -105,7 +106,8 @@ body {
 }
 
 /* Media Query for larger monitors */
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1600px) {
+
   /* Date and Time */
   .date {
     font-size: 3rem;
@@ -144,5 +146,15 @@ body {
 
     font-size: 30px;
     font-weight: 300;
+  }
+}
+
+@media screen and (max-height: 700px) {
+  .date-time {
+    padding-bottom: 8%;
+  }
+
+  .bottom-half {
+    padding-top: 8%;
   }
 }
