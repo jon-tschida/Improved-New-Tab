@@ -100,6 +100,10 @@ body {
   padding-top: var(--segment-spacing);
 }
 
+.unit {
+  font-size: 15px;
+}
+
 /* Media Query for larger monitors */
 @media screen and (min-width: 1000px) {
   /* Date and Time */

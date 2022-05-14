@@ -32,9 +32,6 @@ export default function Weather() {
     )
       .then((res) => res.json())
       .then((data) => setWeatherData(data));
-
-    // logging when our API is called to make sure we don't have a loop
-    console.log(`weather data called`);
   }, []);
 
   React.useEffect(() => {
