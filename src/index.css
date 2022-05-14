@@ -154,6 +154,23 @@ body {
     padding-bottom: 8%;
   }
 
+  .date {
+    font-size: 2.5rem;
+    font-weight: 200;
+    text-align: center;
+  }
+
+  .time {
+    font-size: 3.5rem;
+    font-weight: 100;
+    text-align: center;
+  }
+
+  .greeting--header {
+    font-size: 50px;
+    font-weight: 200;
+  }
+
   .bottom-half {
     padding-top: 8%;
   }
