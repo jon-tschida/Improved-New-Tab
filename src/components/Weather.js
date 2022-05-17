@@ -28,7 +28,7 @@ export default function Weather() {
 
   React.useEffect(() => {
     fetch(
-      `http://api.openweathermap.org/data/2.5/weather?lat=46.76466&lon=-92.09463&units=imperial&appid=2a8ab662e8539e2cb45726e6080084e6`
+      `http://api.openweathermap.org/data/2.5/weather?lat=46.76466&lon=-92.09463&units=imperial&appid=${process.env.REACT_APP_OPENWEATHER_API}`
     )
       .then((res) => res.json())
       .then((data) => setWeatherData(data));

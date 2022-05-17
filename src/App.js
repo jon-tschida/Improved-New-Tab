@@ -21,6 +21,7 @@ const dayOptions = {
   weekday: `short`,
 };
 
+console.log(process.env.REACT_APP_OPENWEATHER_API)
 export default function App() {
   return (
     <div>
