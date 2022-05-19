@@ -21,8 +21,11 @@ export default function GetLocation(props) {
     }
 
     const handleClick = () =>{
-        props.handleInput(props.format(input.input)); 
-        props.handleCoords(prevState => !prevState);
+        if (input.input.length > 0){
+            props.handleInput(props.format(input.input)); 
+            localStorage.setItem("location", props.format(input.input))
+            props.handleCoords(prevState => !prevState);
+        }
     }
 
     

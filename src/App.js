@@ -26,38 +26,44 @@ const formatInput = (text) =>text.replace(/ /g, "%");
 
 export default function App() {
 
-  const [location, setLocation] = React.useState(`duluth%mn`)
+  const [location, setLocation] = React.useState(() => {
+    let init = localStorage.getItem("location")
+    return init || `duluth%mn`}
+    
+    )
 
-
-  const [coords, setCoords] = React.useState({
+  const [coords, setCoords] = React.useState(() =>
+  { 
+  let init = {
+    latitude: localStorage.getItem("lat"),
+    longitude: localStorage.getItem("long"),
+  }
+  return init ||  { 
     latitude: `45`,
-    longitude: '45'
-  })
-
+    longitude: '45' 
+  }
+})
 
   const [haveCoords, setHaveCoords] = React.useState(() =>{
     let initialValue = JSON.parse(localStorage.getItem("haveCoords"));
     return initialValue || false;
   })
   
+  //// API call to search for lat - long from user input
   React.useEffect(()=>{
   fetch(`https://api.myptv.com/geocoding/v1/locations/by-text?searchText=${location}&apiKey=NDVkZjZlYTFmNWMzNGEyZmIzNzMwMzNkNjkxMDRjMjQ6ZTM5OGNmOGItY2ZlNS00N2ZmLTg5YTAtZGUxMjE2ODMxMDc3`)
   .then(res => res.json())
   .then(data => setCoords(data.locations[0].referencePosition))
-}, [location])
+}, [haveCoords])
 
 React.useEffect(()=>{
-  localStorage.setItem("lat", coords.latitude)
-  localStorage.setItem("long", coords.longitude)
   localStorage.setItem("haveCoords", haveCoords)
-  
 }, [haveCoords])
-/*
-console.log(haveCoords)
-console.log(coords)
 
-console.log(location)
-*/
+React.useEffect(()=>{
+localStorage.setItem("lat", Number(coords.latitude).toFixed(5))
+localStorage.setItem("long", Number(coords.longitude).toFixed(5))
+}, [coords])
 
 return (
     <>
@@ -66,7 +72,7 @@ return (
         <Header formatAMPM={formatAMPM} dayOptions={dayOptions} />
         {haveCoords 
         ? 
-        <Weather />
+        <Weather coords={coords}/>
         :
         <GetLocation handleInput={setLocation} format={formatInput} handleCoords={setHaveCoords}/>
         }
