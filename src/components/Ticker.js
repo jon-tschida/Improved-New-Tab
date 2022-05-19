@@ -25,9 +25,8 @@ export default function Ticker() {
       `https://data.messari.io/api/v1/assets?fields=id,slug,symbol,metrics/market_data/price_usd`
     )
       .then((res) => res.json())
-      .then((data) => setPrices(data.data));
+      .then((data) => setPrices(data.data.filter((el)=> el.slug === "bitcoin" || el.slug === "ethereum" || el.slug === "solana")));
   }, [count]);
-
 
 
   //////
@@ -35,44 +34,12 @@ export default function Ticker() {
   let refresh = () => setCount((prevState) => prevState + 1);
 
   /////
-  // Looping through our API data and pushing BTC, SOL and ETH to the pricesarr which we display on the page.
-  let pricesArr = [];
-  function getPrices(arr) {
-    for (let i = 0; i < arr.length; i++) {
-      if (arr[i].symbol === "BTC") {
-        pricesArr.push(
-          <Price
-            symbol={arr[i].symbol}
-            price={arr[i].metrics.market_data.price_usd}
-            key={i}
-          />
-        );
-      } else if (arr[i].symbol === "SOL") {
-        pricesArr.push(
-          <Price
-            symbol={arr[i].symbol}
-            price={arr[i].metrics.market_data.price_usd}
-            key={i}
-          />
-        );
-      } else if (arr[i].symbol === "ETH") {
-        pricesArr.push(
-          <Price
-            symbol={arr[i].symbol}
-            price={arr[i].metrics.market_data.price_usd}
-            key={i}
-          />
-        );
-      }
-    }
-  }
-  getPrices(prices);
+  // using map on our prices state to create an array of Price components which we will display 
+  let pricesArr = prices.map((el, i) => <Price symbol={el.symbol} price={el.metrics.market_data.price_usd} key={i}/>)
 
   return (
     <div className="price-list">
-      <span onClick={refresh} className="material-symbols-outlined refresh">
-        refresh
-      </span>
+      <span onClick={refresh} className="material-symbols-outlined refresh">refresh</span>
       {pricesArr}
     </div>
   );
