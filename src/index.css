@@ -17,6 +17,44 @@ body {
   color: rgb(41, 41, 41);
 }
 
+/* Get location */
+.location-form-header{
+  text-align: center;
+}
+
+input{
+  text-align: center;
+  display: block;
+  margin: auto;
+  margin-top: 10px;
+  padding: 5px;
+  border: 1px black;
+  border-radius: 5px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  height: 35px;
+  width: 300px;
+}
+button{
+  display: block;
+  margin: auto;
+  margin-top: 10px;
+  padding: 5px;
+  border: 1px black;
+  border-radius: 5px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  height: 35px;
+  width: 300px;
+  cursor: pointer;
+  transition: background-color 250ms ease-in-out;
+}
+button:hover{
+  color: white;
+  background-color: rgb(94, 94, 94);
+  transition: background-color 250ms ease-in-out;
+}
+
+/*  */
+
 /* Header styling */
 .date-time {
   padding: 25px;

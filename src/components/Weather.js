@@ -26,13 +26,17 @@ export default function Weather() {
     return initialValue || false;
   });
 
+
   React.useEffect(() => {
     fetch(
-      `http://api.openweathermap.org/data/2.5/weather?lat=46.76466&lon=-92.09463&units=imperial&appid=${process.env.REACT_APP_OPENWEATHER_API}`
+      `http://api.openweathermap.org/data/2.5/weather?lat=${localStorage.getItem(`lat`)}&lon=${localStorage.getItem(`long`)}&units=imperial&appid=${process.env.REACT_APP_OPENWEATHER_API}`
     )
       .then((res) => res.json())
       .then((data) => setWeatherData(data));
-  }, []);
+  }, [localStorage.getItem(`lat`)]);
+
+  console.log(weatherData)
+  
 
   React.useEffect(() => {
     localStorage.setItem("fOrC", fOrC);

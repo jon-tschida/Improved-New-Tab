@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./components/Header";
 import Weather from "./components/Weather";
 import Ticker from "./components/Ticker";
+import GetLocation from "./components/GetLocation";
 
 function formatAMPM(date) {
   var hours = date.getHours();
@@ -21,16 +22,59 @@ const dayOptions = {
   weekday: `short`,
 };
 
+const formatInput = (text) =>text.replace(/ /g, "%");
+
 export default function App() {
-  return (
+
+  const [location, setLocation] = React.useState(`duluth%mn`)
+
+
+  const [coords, setCoords] = React.useState({
+    latitude: `45`,
+    longitude: '45'
+  })
+
+
+  const [haveCoords, setHaveCoords] = React.useState(() =>{
+    let initialValue = JSON.parse(localStorage.getItem("haveCoords"));
+    return initialValue || false;
+  })
+  
+  React.useEffect(()=>{
+  fetch(`https://api.myptv.com/geocoding/v1/locations/by-text?searchText=${location}&apiKey=NDVkZjZlYTFmNWMzNGEyZmIzNzMwMzNkNjkxMDRjMjQ6ZTM5OGNmOGItY2ZlNS00N2ZmLTg5YTAtZGUxMjE2ODMxMDc3`)
+  .then(res => res.json())
+  .then(data => setCoords(data.locations[0].referencePosition))
+}, [location])
+
+React.useEffect(()=>{
+  localStorage.setItem("lat", coords.latitude)
+  localStorage.setItem("long", coords.longitude)
+  localStorage.setItem("haveCoords", haveCoords)
+  
+}, [haveCoords])
+/*
+console.log(haveCoords)
+console.log(coords)
+
+console.log(location)
+*/
+
+return (
+    <>
     <div>
       <div className="top-half">
         <Header formatAMPM={formatAMPM} dayOptions={dayOptions} />
+        {haveCoords 
+        ? 
         <Weather />
+        :
+        <GetLocation handleInput={setLocation} format={formatInput} handleCoords={setHaveCoords}/>
+        }
       </div>
       <div className="bottom-half">
         <Ticker />
       </div>
     </div>
+    </>
   );
 }
