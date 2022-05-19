@@ -12,7 +12,6 @@ function formatAMPM(date) {
   hours = hours ? hours : 12; // the hour '0' should be '12'
   minutes = minutes < 10 ? "0" + minutes : minutes;
   let strTime = `${hours} : ${minutes}${ampm}`;
-  // var strTime = hours + ":" + minutes + " " + ampm;
   return strTime;
 }
 
@@ -49,17 +48,16 @@ export default function App() {
     return initialValue || false;
   })
   
-  //// API call to search for lat - long from user input
+  //// API call to search for lat - long from user input, location is set in the GetLocation component
+  // Setting our haveCoords value (true or false) in local storage
   React.useEffect(()=>{
   fetch(`https://api.myptv.com/geocoding/v1/locations/by-text?searchText=${location}&apiKey=NDVkZjZlYTFmNWMzNGEyZmIzNzMwMzNkNjkxMDRjMjQ6ZTM5OGNmOGItY2ZlNS00N2ZmLTg5YTAtZGUxMjE2ODMxMDc3`)
   .then(res => res.json())
   .then(data => setCoords(data.locations[0].referencePosition))
-}, [haveCoords])
-
-React.useEffect(()=>{
   localStorage.setItem("haveCoords", haveCoords)
 }, [haveCoords])
 
+// Setting coords in local storage anytime our coords state changes
 React.useEffect(()=>{
 localStorage.setItem("lat", Number(coords.latitude).toFixed(5))
 localStorage.setItem("long", Number(coords.longitude).toFixed(5))

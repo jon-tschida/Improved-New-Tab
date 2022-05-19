@@ -13,7 +13,6 @@ let loadingData = {
   },
 };
 
-// Function for converting temps from API to F
 
 // Function to capitalize
 let capitalize = (str) => str.replace(str[0], str[0].toUpperCase());
@@ -27,7 +26,7 @@ export default function Weather(props) {
   });
 
 
-
+// Running our weather api call anytime coords changes
   React.useEffect(() => {
     setTimeout(()=>{
     fetch(
@@ -35,7 +34,7 @@ export default function Weather(props) {
     )
       .then((res) => res.json())
       .then((data) => setWeatherData(data));
-    }, "500")
+    }, "100")
     }, [props.coords]);
     
   
@@ -44,8 +43,10 @@ export default function Weather(props) {
     localStorage.setItem("fOrC", fOrC);
   }, [fOrC]);
 
+  // flips our F or C value
   let handleClick = () => setForC((prevState) => !prevState);
 
+  // convert F to C
   let convert = (temp) => Math.trunc(((temp - 32) * 5) / 9);
 
   return (
