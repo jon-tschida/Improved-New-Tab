@@ -63,7 +63,7 @@ export default function App() {
       });
 
     localStorage.setItem("haveCoords", haveCoords);
-  }, [haveCoords]);
+  }, [haveCoords, location]);
 
   // Setting coords in local storage anytime our coords state changes
   React.useEffect(() => {
