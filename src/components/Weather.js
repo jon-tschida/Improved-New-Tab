@@ -32,7 +32,7 @@ export default function Weather(props) {
           localStorage.getItem(`lat`)
         )}&lon=${JSON.parse(
           localStorage.getItem(`long`)
-        )}&units=imperial&appid=${process.env.REACT_APP_OPENWEATHER_API}`
+        )}&units=imperial&appid=2a8ab662e8539e2cb45726e6080084e6`
       )
         .then((res) => res.json())
         .then((data) => setWeatherData(data));
