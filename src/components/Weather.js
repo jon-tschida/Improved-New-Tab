@@ -28,7 +28,7 @@ export default function Weather(props) {
   React.useLayoutEffect(() => {
     setTimeout(() => {
       fetch(
-        `http://api.openweathermap.org/data/2.5/weather?lat=${JSON.parse(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${JSON.parse(
           localStorage.getItem(`lat`)
         )}&lon=${JSON.parse(
           localStorage.getItem(`long`)
