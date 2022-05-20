@@ -27,7 +27,7 @@ export default function Weather(props) {
 
 
 // Running our weather api call anytime coords changes
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     setTimeout(()=>{
     fetch(
       `http://api.openweathermap.org/data/2.5/weather?lat=${JSON.parse(localStorage.getItem(`lat`))}&lon=${JSON.parse(localStorage.getItem(`long`))}&units=imperial&appid=${process.env.REACT_APP_OPENWEATHER_API}`
