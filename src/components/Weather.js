@@ -13,7 +13,6 @@ let loadingData = {
   },
 };
 
-
 // Function to capitalize
 let capitalize = (str) => str.replace(str[0], str[0].toUpperCase());
 
@@ -25,19 +24,20 @@ export default function Weather(props) {
     return initialValue || false;
   });
 
-
-// Running our weather api call anytime coords changes
+  // Running our weather api call anytime coords changes
   React.useLayoutEffect(() => {
-    setTimeout(()=>{
-    fetch(
-      `http://api.openweathermap.org/data/2.5/weather?lat=${JSON.parse(localStorage.getItem(`lat`))}&lon=${JSON.parse(localStorage.getItem(`long`))}&units=imperial&appid=${process.env.REACT_APP_OPENWEATHER_API}`
-    )
-      .then((res) => res.json())
-      .then((data) => setWeatherData(data));
-    }, "100")
-    }, [props.coords]);
-    
-  
+    setTimeout(() => {
+      fetch(
+        `http://api.openweathermap.org/data/2.5/weather?lat=${JSON.parse(
+          localStorage.getItem(`lat`)
+        )}&lon=${JSON.parse(
+          localStorage.getItem(`long`)
+        )}&units=imperial&appid=${process.env.REACT_APP_OPENWEATHER_API}`
+      )
+        .then((res) => res.json())
+        .then((data) => setWeatherData(data));
+    }, "100");
+  }, [props.coords]);
 
   React.useEffect(() => {
     localStorage.setItem("fOrC", fOrC);

@@ -8,7 +8,6 @@
   --segment-spacing: 10%;
 }
 
-
 /* font-family: 'IBM Plex Sans', sans-serif; */
 
 body {
@@ -18,11 +17,11 @@ body {
 }
 
 /* Get location */
-.location-form-header{
+.location-form-header {
   text-align: center;
 }
 
-input{
+input {
   text-align: center;
   display: block;
   margin: auto;
@@ -30,27 +29,69 @@ input{
   padding: 5px;
   border: 1px black;
   border-radius: 5px;
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: "IBM Plex Sans", sans-serif;
   height: 35px;
   width: 300px;
 }
-button{
+button {
   display: block;
   margin: auto;
   margin-top: 10px;
   padding: 5px;
   border: 1px black;
   border-radius: 5px;
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: "IBM Plex Sans", sans-serif;
   height: 35px;
   width: 300px;
   cursor: pointer;
   transition: background-color 250ms ease-in-out;
 }
-button:hover{
+button:hover {
   color: white;
   background-color: rgb(94, 94, 94);
   transition: background-color 250ms ease-in-out;
+}
+
+/*  */
+
+/* Menu */
+.menu-icon {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.menu-list {
+  position: absolute;
+  top: 40px;
+  left: 15px;
+  opacity: 0;
+  transition: opacity 250ms ease-in-out;
+}
+
+.active {
+  top: 40px;
+  left: 15px;
+  opacity: 1;
+  transition: opacity 250ms ease-in-out;
+}
+
+.menu-list-items {
+  padding: 15px;
+  font-size: 15px;
+  list-style-type: none;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.menu-button {
+  width: 200px;
+  box-shadow: 0px 0px 5px;
+}
+
+.menu-button:hover {
+  width: 200px;
 }
 
 /*  */
@@ -145,7 +186,6 @@ button:hover{
 
 /* Media Query for larger monitors */
 @media screen and (min-width: 1600px) {
-
   /* Date and Time */
   .date {
     font-size: 3rem;
