@@ -70,21 +70,12 @@ export default function Weather(props) {
 
       <p className="f-c-switch">
         F
-        {fOrC ? (
-          <span
-            className="material-symbols-outlined unit-switch"
-            onClick={handleClick}
-          >
-            toggle_off
-          </span>
-        ) : (
-          <span
-            className="material-symbols-outlined unit-switch"
-            onClick={handleClick}
-          >
-            toggle_on
-          </span>
-        )}
+        <span
+          className="material-symbols-outlined unit-switch"
+          onClick={handleClick}
+        >
+          {fOrC ? "toggle_off" : "toggle_on"}
+        </span>
         C
       </p>
     </div>
