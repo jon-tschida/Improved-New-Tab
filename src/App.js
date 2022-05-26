@@ -25,6 +25,8 @@ const dayOptions = {
 const formatInput = (text) => text.replace(/ /g, "%");
 
 export default function App() {
+  // ===== State =====
+
   const [location, setLocation] = React.useState(() => {
     let init = localStorage.getItem("location");
     return init || `duluth%mn`;
@@ -50,6 +52,13 @@ export default function App() {
 
   const [userLocation, setUserLocation] = React.useState("");
 
+  const [enableTicker, setEnableTicker] = React.useState(() => {
+    let init = JSON.parse(localStorage.getItem("cryptoTickerEnabled"));
+    return false || false;
+  });
+
+  // ===== end state ======
+
   //// API call to search for lat - long from user input, location is set in the GetLocation component
   // Setting our haveCoords value (true or false) in local storage
   React.useEffect(() => {
@@ -71,12 +80,24 @@ export default function App() {
     localStorage.setItem("long", Number(coords.longitude).toFixed(5));
   }, [coords]);
 
+  // saving the users crypto ticker preferance in local storage
+
+  React.useEffect(() => {
+    localStorage.setItem("cryptoTickerEnabled", enableTicker);
+  }, [enableTicker]);
+
+  console.log(enableTicker);
+
   return (
     <>
       <div>
-        {haveCoords ? (
-          <Menu setHaveCoords={setHaveCoords} currentLocation={userLocation} />
-        ) : null}
+        <Menu
+          setHaveCoords={setHaveCoords}
+          currentLocation={userLocation}
+          haveCoords={haveCoords}
+          enableTicker={enableTicker}
+          setEnableTicker={setEnableTicker}
+        />
         <div className="top-half">
           <Header formatAMPM={formatAMPM} dayOptions={dayOptions} />
           {haveCoords ? (
@@ -93,9 +114,7 @@ export default function App() {
             </>
           )}
         </div>
-        <div className="bottom-half">
-          <Ticker />
-        </div>
+        <div className="bottom-half">{enableTicker && <Ticker />}</div>
       </div>
     </>
   );

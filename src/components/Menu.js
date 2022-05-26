@@ -7,6 +7,9 @@ export default function Menu(props) {
 
   const menuButton = () => props.setHaveCoords((prevState) => !prevState);
 
+  const showCryptoTickerButton = () =>
+    props.setEnableTicker((prevState) => !prevState);
+
   return (
     <>
       <div>
@@ -16,13 +19,24 @@ export default function Menu(props) {
           alt="menu"
           onClick={openMenu}
         />
-        <ul className={`menu-list ${menuOpen ? `active` : null}`}>
+        <ul className={`menu-list ${menuOpen && `active`}`}>
           <li className="menu-list-items">
-            <button className="menu-button" onClick={menuButton}>
-              Change weather location
-            </button>
+            {props.haveCoords && (
+              <button className="menu-button" onClick={menuButton}>
+                Change weather location
+              </button>
+            )}
           </li>
           <li className="menu-list-items">Location: {props.currentLocation}</li>
+          <li className="menu-list-items">
+            <p>Show Crypto Ticker</p>
+            <span
+              className="material-symbols-outlined unit-switch"
+              onClick={showCryptoTickerButton}
+            >
+              {props.enableTicker ? "toggle_on" : "toggle_off"}
+            </span>
+          </li>
         </ul>
       </div>
     </>
