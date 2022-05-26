@@ -10,6 +10,8 @@ export default function Menu(props) {
   const showCryptoTickerButton = () =>
     props.setEnableTicker((prevState) => !prevState);
 
+  const flipForC = () => props.setForC((prevState) => !prevState);
+
   return (
     <>
       <div>
@@ -36,6 +38,19 @@ export default function Menu(props) {
             >
               {props.enableTicker ? "toggle_on" : "toggle_off"}
             </span>
+          </li>
+          <li className="menu-list-items">
+            <p>Weather Unit</p>
+            <div className="f-c-switch">
+              C
+              <span
+                className="material-symbols-outlined unit-switch"
+                onClick={flipForC}
+              >
+                {props.fOrC ? "toggle_on" : "toggle_off"}
+              </span>
+              F
+            </div>
           </li>
         </ul>
       </div>

@@ -54,7 +54,12 @@ export default function App() {
 
   const [enableTicker, setEnableTicker] = React.useState(() => {
     let init = JSON.parse(localStorage.getItem("cryptoTickerEnabled"));
-    return false || false;
+    return init || false;
+  });
+
+  const [fOrC, setForC] = React.useState(() => {
+    let initialValue = JSON.parse(localStorage.getItem("fOrC"));
+    return initialValue || false;
   });
 
   // ===== end state ======
@@ -97,12 +102,14 @@ export default function App() {
           haveCoords={haveCoords}
           enableTicker={enableTicker}
           setEnableTicker={setEnableTicker}
+          fOrC={fOrC}
+          setForC={setForC}
         />
         <div className="top-half">
           <Header formatAMPM={formatAMPM} dayOptions={dayOptions} />
           {haveCoords ? (
             <>
-              <Weather coords={coords} />
+              <Weather coords={coords} fOrC={fOrC} />
             </>
           ) : (
             <>
