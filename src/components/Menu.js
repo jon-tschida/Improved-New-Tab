@@ -1,17 +1,12 @@
 import React from "react";
 
+
+let flipState = (func) => {
+  return func(prevState => !prevState)
+}
+
 export default function Menu(props) {
   const [menuOpen, setMenuOpen] = React.useState(false);
-
-  const openMenu = () => setMenuOpen((prevState) => !prevState);
-
-  const menuButton = () => props.setHaveCoords((prevState) => !prevState);
-
-  const showCryptoTickerButton = () => props.setEnableTicker((prevState) => !prevState);
-
-  const flipForC = () => props.setForC((prevState) => !prevState);
-
-  const handleDayOrNight = () => props.setDayOrNight(prevState => !prevState);
 
   return (
     <>
@@ -20,12 +15,12 @@ export default function Menu(props) {
           className="menu-icon"
           src={require(`../images/${menuOpen ? `close.png` : `menu.png`}`)}
           alt="menu"
-          onClick={openMenu}
+          onClick={() => flipState(setMenuOpen)}
         />
         <ul className={`menu-list ${menuOpen && `active`}`}>
           <li className="menu-list-items">
             {props.haveCoords && (
-              <button className="menu-button" onClick={menuButton}>
+              <button className="menu-button" onClick={() => flipState(props.setHaveCoords)}>
                 Change weather location
               </button>
             )}
@@ -35,7 +30,7 @@ export default function Menu(props) {
             <p>Show Crypto Ticker</p>
             <span
               className="material-symbols-outlined unit-switch"
-              onClick={showCryptoTickerButton}
+              onClick={() => flipState(props.setEnableTicker)}
             >
               {props.enableTicker ? "toggle_on" : "toggle_off"}
             </span>
@@ -46,7 +41,7 @@ export default function Menu(props) {
               C
               <span
                 className="material-symbols-outlined unit-switch"
-                onClick={flipForC}
+                onClick={() => flipState(props.setForC)}
               >
                 {props.fOrC ? "toggle_on" : "toggle_off"}
               </span>
@@ -57,7 +52,7 @@ export default function Menu(props) {
             <p>Day / Night</p>
             <span
               className="material-symbols-outlined unit-switch"
-              onClick={handleDayOrNight}
+              onClick={() => flipState(props.setDayOrNight)}
             >
               {props.dayOrNight ? "toggle_on" : "toggle_off"}
             </span>
