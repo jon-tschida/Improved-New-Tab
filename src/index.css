@@ -4,6 +4,7 @@
   box-sizing: border-box;
 }
 
+/* Half page spacing  */
 :root {
   --segment-spacing: 10%;
 }
@@ -14,10 +15,10 @@ html,
 body {
   font-family: "IBM Plex Sans", sans-serif;
   height: 100%;
-  /* background-color: rgb(226, 226, 226); */
-  /* color: rgb(41, 41, 41); */
 
 }
+
+/* Day/night mode classes */
 
 .day {
   color: rgb(41, 41, 41);
@@ -35,6 +36,8 @@ body {
   height: 100%;
   height: 100vh;
 }
+
+/* End day night mode classes */
 
 /* Get location */
 .location-form-header {
@@ -74,7 +77,7 @@ button:hover {
   transition: background-color 250ms ease-in-out;
 }
 
-/*  */
+/* end get location */
 
 /* Menu */
 .menu-icon {
@@ -89,7 +92,12 @@ button:hover {
   top: 40px;
   left: 15px;
   opacity: 0;
+
   transition: opacity 250ms ease-in-out;
+
+  border: rgb(52, 52, 52) solid;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px;
 }
 
 .active {
@@ -97,6 +105,11 @@ button:hover {
   left: 15px;
   opacity: 1;
   transition: opacity 250ms ease-in-out;
+
+  border: rgb(52, 52, 52) solid;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px;
+
 }
 
 .menu-list-items {
@@ -112,11 +125,8 @@ button:hover {
   box-shadow: 0px 0px 5px;
 }
 
-.menu-button:hover {
-  width: 200px;
-}
 
-/*  */
+/* end menu */
 
 /* Header styling */
 .date-time {
@@ -136,6 +146,8 @@ button:hover {
   text-align: center;
 }
 
+/* End header styling */
+
 /* Greeting */
 
 .greeting {
@@ -151,6 +163,8 @@ button:hover {
   font-size: 25px;
   font-weight: 200;
 }
+
+/* End greeting */
 
 /* Weather */
 
@@ -169,6 +183,8 @@ button:hover {
   cursor: pointer;
   user-select: none;
 }
+
+/* End weather */
 
 /* Ticker/Prices */
 
@@ -197,6 +213,8 @@ button:hover {
   transition: transform 0.2s ease-in-out;
 }
 
+/* End Ticker Prices */
+
 /* Half chop-up */
 .bottom-half {
   padding-top: var(--segment-spacing);
@@ -205,6 +223,8 @@ button:hover {
 .unit {
   font-size: 15px;
 }
+
+/* End half page */
 
 /* Media Query for larger monitors */
 @media screen and (min-width: 1600px) {
