@@ -7,10 +7,11 @@ export default function Menu(props) {
 
   const menuButton = () => props.setHaveCoords((prevState) => !prevState);
 
-  const showCryptoTickerButton = () =>
-    props.setEnableTicker((prevState) => !prevState);
+  const showCryptoTickerButton = () => props.setEnableTicker((prevState) => !prevState);
 
   const flipForC = () => props.setForC((prevState) => !prevState);
+
+  const handleDayOrNight = () => props.setDayOrNight(prevState => !prevState);
 
   return (
     <>
@@ -51,6 +52,15 @@ export default function Menu(props) {
               </span>
               F
             </div>
+          </li>
+          <li className="menu-list-items">
+            <p>Day / Night</p>
+            <span
+              className="material-symbols-outlined unit-switch"
+              onClick={handleDayOrNight}
+            >
+              {props.dayOrNight ? "toggle_on" : "toggle_off"}
+            </span>
           </li>
         </ul>
       </div>

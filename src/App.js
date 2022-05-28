@@ -62,6 +62,11 @@ export default function App() {
     return initialValue || false;
   });
 
+  const [dayOrNight, setDayOrNight] = React.useState(() => {
+    let init = JSON.parse(localStorage.getItem("dayOrNight"));
+    return init || false;
+  })
+
   // ===== end state ======
 
   //// API call to search for lat - long from user input, location is set in the GetLocation component
@@ -86,15 +91,17 @@ export default function App() {
   }, [coords]);
 
   // saving the users crypto ticker preferance in local storage
-
   React.useEffect(() => {
     localStorage.setItem("cryptoTickerEnabled", enableTicker);
   }, [enableTicker]);
 
-  console.log(enableTicker);
+  // Saving day or night mode preference in local storage
+  React.useEffect(() => {
+    localStorage.setItem("dayOrNight", dayOrNight)
+  }, [dayOrNight])
 
   return (
-    <>
+    <div className={`main ${dayOrNight ? `night` : `day`}`}>
       <div>
         <Menu
           setHaveCoords={setHaveCoords}
@@ -104,6 +111,8 @@ export default function App() {
           setEnableTicker={setEnableTicker}
           fOrC={fOrC}
           setForC={setForC}
+          dayOrNight={dayOrNight}
+          setDayOrNight={setDayOrNight}
         />
         <div className="top-half">
           <Header formatAMPM={formatAMPM} dayOptions={dayOptions} />
@@ -123,6 +132,6 @@ export default function App() {
         </div>
         <div className="bottom-half">{enableTicker && <Ticker />}</div>
       </div>
-    </>
+    </div>
   );
 }

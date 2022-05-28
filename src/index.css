@@ -10,10 +10,30 @@
 
 /* font-family: 'IBM Plex Sans', sans-serif; */
 
+html,
 body {
   font-family: "IBM Plex Sans", sans-serif;
-  background-color: rgb(226, 226, 226);
+  height: 100%;
+  /* background-color: rgb(226, 226, 226); */
+  /* color: rgb(41, 41, 41); */
+
+}
+
+.day {
   color: rgb(41, 41, 41);
+  background-color: rgb(226, 226, 226);
+  transition: background-color 250ms ease-in-out;
+}
+
+.night {
+  color: rgb(222, 222, 222);
+  background-color: rgb(48, 48, 48);
+  transition: background-color 250ms ease-in-out;
+}
+
+.main {
+  height: 100%;
+  height: 100vh;
 }
 
 /* Get location */
@@ -33,6 +53,7 @@ input {
   height: 35px;
   width: 300px;
 }
+
 button {
   display: block;
   margin: auto;
@@ -46,6 +67,7 @@ button {
   cursor: pointer;
   transition: background-color 250ms ease-in-out;
 }
+
 button:hover {
   color: white;
   background-color: rgb(94, 94, 94);
@@ -186,6 +208,7 @@ button:hover {
 
 /* Media Query for larger monitors */
 @media screen and (min-width: 1600px) {
+
   /* Date and Time */
   .date {
     font-size: 3rem;
