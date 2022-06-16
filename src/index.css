@@ -6,7 +6,7 @@
 
 /* Half page spacing  */
 :root {
-  --segment-spacing: 10%;
+  --segment-spacing: 8%;
 }
 
 /* font-family: 'IBM Plex Sans', sans-serif; */
@@ -270,13 +270,14 @@ button:hover {
   }
 }
 
-@media screen and (max-height: 700px) {
+/* Generic rule for most phones */
+@media screen and (min-width: 300px) and (max-width: 450px) {
   .date-time {
-    padding-bottom: 8%;
+    padding-bottom: 25%;
   }
 
   .date {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 200;
     text-align: center;
   }
@@ -288,11 +289,19 @@ button:hover {
   }
 
   .greeting--header {
-    font-size: 50px;
+    font-size: 2.8rem;
     font-weight: 200;
   }
 
   .bottom-half {
-    padding-top: 8%;
+    padding-top: 25%;
+  }
+
+  .price-list {
+    font-size: 18px;
+  }
+
+  .menu-list {
+    background-color: rgb(178, 178, 178);
   }
 }
