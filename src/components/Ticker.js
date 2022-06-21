@@ -1,5 +1,6 @@
 import React from "react";
 import Price from "./Price";
+import Loader from "./Loader";
 
 // https://data.messari.io/api/v1/assets?fields=id,slug,symbol,metrics/market_data/price_usd
 
@@ -17,6 +18,7 @@ const defaultPrices = [
 export default function Ticker() {
   const [prices, setPrices] = React.useState(defaultPrices);
   let [count, setCount] = React.useState(0);
+  let [loading, setLoading] = React.useState(true)
   let pricesArr = [];
   //////
   // API call for Crypto prices, runs on inital render and when we hit refresh
@@ -37,6 +39,10 @@ export default function Ticker() {
       );
   }, [count]);
 
+  React.useEffect(() => {
+    setTimeout(() => setLoading(false), 1500)
+  }, [])
+
   //////
   // When we click refresh, count increases, which kicks off our useEffect  above
   let refresh = () => setCount((prevState) => prevState + 1);
@@ -53,10 +59,15 @@ export default function Ticker() {
 
   return (
     <div className="price-list">
-      <span onClick={refresh} className="material-symbols-outlined refresh">
-        refresh
-      </span>
-      {pricesArr}
+      {loading === false ?
+        <>
+          <span onClick={refresh} className="material-symbols-outlined refresh">
+            refresh
+          </span>
+          {pricesArr}
+        </>
+        : <Loader />
+      }
     </div>
   );
 }
