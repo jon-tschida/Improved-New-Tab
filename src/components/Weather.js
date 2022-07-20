@@ -33,6 +33,7 @@ export default function Weather(props) {
         .then((data) => setWeatherData(data));
     }, "100");
   }, [props.coords]);
+  console.log(weatherData)
 
   React.useEffect(() => {
     localStorage.setItem("fOrC", props.fOrC);
@@ -52,7 +53,7 @@ export default function Weather(props) {
       </p>
       {weatherData.main.temp_max !== weatherData.main.feels_like && (
         <p className="greeting--paragraph">
-          with a high today of{" "}
+          with a high this hour of{" "}
           {props.fOrC
             ? Math.trunc(weatherData.main.temp_max)
             : convert(weatherData.main.temp_max)}
