@@ -18,30 +18,31 @@ const defaultPrices = [
 export default function Ticker() {
   const [prices, setPrices] = React.useState(defaultPrices);
   let [count, setCount] = React.useState(0);
-  let [loading, setLoading] = React.useState(true)
+  let [loading, setLoading] = React.useState()
   let pricesArr = [];
+  
+  
   //////
-  // API call for Crypto prices, runs on inital render and when we hit refresh
-  React.useLayoutEffect(() => {
-    fetch(
-      `https://data.messari.io/api/v1/assets?fields=id,slug,symbol,metrics/market_data/price_usd`
-    )
-      .then((res) => res.json())
-      .then((data) =>
-        setPrices(
-          data.data.filter(
-            (el, i) =>
-              el.slug === "bitcoin" ||
-              el.slug === "ethereum" ||
-              el.slug === "solana"
-          )
-        )
-      );
-  }, [count]);
+  // API call for Crypto prices, putting it inside a useLayoutEffect so it runs on inital render and when we hit refresh
 
-  React.useEffect(() => {
-    setTimeout(() => setLoading(false), 1500)
-  }, [])
+  async function fetchCryptoPrices() {
+    setLoading(true);
+    
+    const response = await fetch(`https://data.messari.io/api/v1/assets?fields=id,slug,symbol,metrics/market_data/price_usd`)
+    const json = await response.json();
+    
+    setLoading(false);
+    setPrices(json.data.filter(
+      (el, i) =>
+        el.slug === "bitcoin" ||
+        el.slug === "ethereum" ||
+        el.slug === "solana"
+    ))
+  }
+
+  React.useLayoutEffect(() => {
+    fetchCryptoPrices();
+  }, [count]);
 
   //////
   // When we click refresh, count increases, which kicks off our useEffect  above
